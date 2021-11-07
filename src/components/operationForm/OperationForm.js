@@ -8,7 +8,7 @@ const OperationForm = ({ cryptoId, unitPrice, operation }) => {
 
   function buyAction() {
     db.post('/broker/new_trade/', {
-      user_id: 4, // virá do usuário logado --> //!Use Context
+      user_id: 5, // virá do usuário logado --> //!Use Context
       crypto_id: cryptoId, // virá do cartão que o usuario selecionou //$(Pai)
       unit_price: unitPrice, // virá do cartão que o usuário selecionou
       quantity:

@@ -22,10 +22,8 @@ export function GET_CRYPTOS_PRICE_ONLY(idsArray) {
 
 //! CRYPTO MARKET'S DATA
 export function GET_CRYPTOS_MARKET_DATA(
+  pageNumber,
   idsArray = null,
-  orderBy = 'market_cap_desc',
-  pageQuantity = 20,
-  pageNumber = 1,
   hasSparkline = false,
   filterByCategoryId = null,
 ) {
@@ -45,14 +43,12 @@ export function GET_CRYPTOS_MARKET_DATA(
             * nº da página
             * sparkline: array de valores nos ultimos 7 dias
     */
-  let endpoint = 'coins/markets?vs_currency=usd';
+  let endpoint = 'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20';
   idsArray ? (endpoint += `&ids=${idsArray.join('%2C')}`) : (endpoint += '');
   filterByCategoryId
     ? (endpoint += `&category=${filterByCategoryId}`)
     : (endpoint += '');
   endpoint +=
-    `&order=${orderBy}` +
-    `&per_page=${pageQuantity}` +
     `&page=${pageNumber}` +
     `sparkline=${hasSparkline}`;
 
