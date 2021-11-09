@@ -17,9 +17,25 @@ html {
   --silver: #bebfc4;
   --black2: #1c1a13;
   --golden: #eec643;
+  --verdeEscuro: #143409;
+  --verde10: #173c0a;
+  --verde9-64: #235b0fa3;
+  --verde9: #235b0f;
+  --verde7: #3a981a;
+  --azulEscuro: #2c445c;
+  --azul10: #172330;
+  --azul9-64: #223548a3;
+  --azul9: #223548;
+  --azul7: #395978;
   --radius: 0.2rem;
 }
 
 body {
-  background: var(--blackBackground);
+  background: var(--richBlack);
+  display: flex;
+  justify-content: center;
+}
+
+body #root {
+  width: 90%;
 }

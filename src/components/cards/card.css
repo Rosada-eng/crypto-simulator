@@ -1,22 +1,12 @@
 .card {
-  --verdeEscuro: #143409;
-  --verde10: #173c0a;
-  --verde9-64: #235b0fa3;
-  --verde9: #235b0f;
-  --verde7: #3a981a;
-  --azulEscuro: #2c445c;
-  --azul10: #172330;
-  --azul9-64: #223548a3;
-  --azul9: #223548;
-  --azul7: #395978;
   position: relative;
-  min-width: 240px;
+  width: 240px;
   height: 340px;
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
   border-radius: 11px;
-  margin: 30px;
+  margin: 30px 0;
 }
 
 .card .box {
@@ -32,8 +22,19 @@
   transition: 0.5s;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
+.card .box::before {
+  content: '';
+  position: absolute;
+  bottom: 25%;
+  right: 25%;
+  width: 90%;
+  height: 150%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: rotate(45deg);
+}
 .card .box:hover {
   transform: translateY(-25px);
   box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
@@ -44,6 +45,7 @@
 .card .box .content {
   padding: 30px 0px;
   text-align: center;
+  z-index: 10;
 }
 
 .card .box .content .ranking {
@@ -84,8 +86,8 @@
 
 .card .box .content .variation p {
   font-size: 1em;
-  font-weight: 600;
-  color: #118707;
+  font-weight: 500;
+
   z-index: 1;
   transition: 0.5s;
 }
@@ -144,5 +146,5 @@
 .card .box .content .operations {
   position: relative;
   top: 20px;
-  /* border: 2px solid red; */
+  transition: 0.5s;
 }

@@ -22,7 +22,7 @@ const Card = ({
     }
   }
   return (
-    <div className="card">
+    <div className="card" onMouseLeave={() => setActiveForm('')}>
       <div className="box">
         <div className="content">
           {name.length > 13 ? (
@@ -38,12 +38,16 @@ const Card = ({
           {flutuation > 0 ? (
             <div className="variation">
               {/* TODO: adicionar simbolo de UP / DOWN */}
-              <p>+ {flutuation.toFixed(2).replace('.', ',')} %</p>
+              <p style={{ color: '#118707' }}>
+                + {flutuation.toFixed(2).replace('.', ',')} %
+              </p>
             </div>
           ) : (
             <div className="variation">
               {/* TODO: adicionar simbolo de UP / DOWN */}
-              <p>{flutuation.toFixed(2).replace('.', ',')} % </p>
+              <p style={{ color: '#d92121' }}>
+                - {(-1 * flutuation).toFixed(2).replace('.', ',')} %{' '}
+              </p>
             </div>
           )}
           {/* TODO: Fazer desativar botão de operations ao clicar fora do card! */}
