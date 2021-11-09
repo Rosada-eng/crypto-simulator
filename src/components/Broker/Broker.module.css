@@ -14,3 +14,38 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.arrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  padding: 5px 20px;
+}
+
+.rightArrow {
+  margin: 5px 8px;
+  cursor: pointer;
+}
+
+.rightArrow:hover {
+  transform: scale(1.1);
+}
+
+.leftArrow {
+  margin: 5px 8px;
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+.leftArrow:hover {
+  transform: rotate(180deg) scale(1.1);
+}
+
+.lefterArrow {
+  margin: 5px 8px;
+  transform: rotate(180deg);
+}
+
+.lefterArrow:hover {
+  transform: rotate(180deg) scale(1.1);
+}

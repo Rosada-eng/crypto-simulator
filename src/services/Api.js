@@ -44,7 +44,7 @@ export function GET_CRYPTOS_MARKET_DATA(
             * sparkline: array de valores nos ultimos 7 dias
     */
   let endpoint =
-    'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50';
+    'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10';
   idsArray ? (endpoint += `&ids=${idsArray.join('%2C')}`) : (endpoint += '');
   filterByCategoryId
     ? (endpoint += `&category=${filterByCategoryId}`)

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from './Navbar.module.css';
 import { ReactComponent as Logo } from './dollar.svg';
+// import { ReactComponent as Wallet } from './wallet.svg';
+import { ReactComponent as Coin } from './dollar-coin.svg';
 
 const Navbar = () => {
   return (
@@ -16,6 +18,7 @@ const Navbar = () => {
       </div>
 
       <div className={styled.currentMoney}>
+        <Coin fill={'1c1a13'} />
         <p>$ 65.482,33</p>
       </div>
     </div>
