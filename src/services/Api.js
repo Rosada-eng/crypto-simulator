@@ -43,14 +43,13 @@ export function GET_CRYPTOS_MARKET_DATA(
             * nº da página
             * sparkline: array de valores nos ultimos 7 dias
     */
-  let endpoint = 'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20';
+  let endpoint =
+    'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10';
   idsArray ? (endpoint += `&ids=${idsArray.join('%2C')}`) : (endpoint += '');
   filterByCategoryId
     ? (endpoint += `&category=${filterByCategoryId}`)
     : (endpoint += '');
-  endpoint +=
-    `&page=${pageNumber}` +
-    `sparkline=${hasSparkline}`;
+  endpoint += `&page=${pageNumber}` + `sparkline=${hasSparkline}`;
 
   return api.get(endpoint).then((response) => response.data);
 }

@@ -1,0 +1,129 @@
+.card {
+  position: relative;
+  min-width: 240px;
+  height: 330px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  margin: 30px;
+}
+
+.card .box {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background: #2a2b2f;
+  border: 2px solid #1e1f23;
+  border-radius: 11px;
+  box-shadow: 0 15px 37px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .box:hover {
+  transform: translateY(-25px);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
+  border-color: #235b0f;
+}
+
+.card .box .content {
+  padding: 30px 0px;
+  text-align: center;
+}
+
+.card .box .content .ranking {
+  position: absolute;
+  top: 7.5px;
+  right: 7.5px;
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.05);
+  /* color: hsl(146.8, 52.9%, 16.5%); */
+}
+
+.card .box .content .name {
+  font-size: 1.6em;
+  color: rgba(255, 255, 255, 0.7);
+  /* color: #eec643; */
+  /* color: hsl(37.3, 100%, 60%); */
+
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.card .box .content .bigName {
+  font-size: 1.4em;
+  color: rgba(255, 255, 255, 0.7);
+  /* color: #eec643; */
+  /* color: hsl(37.3, 100%, 60%); */
+
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.card .box .content .logo {
+  max-height: 120px;
+  padding: 20px;
+  z-index: 2;
+}
+
+/* .card .box .content .marketCap {
+  font-size: 0.8em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+  transition: 0.5s;
+} */
+
+.card .box .content .currentValue {
+  font-size: 1.4em;
+  font-weight: 300;
+  color: #eec643;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.card .box .content .variation p {
+  font-size: 1em;
+  font-weight: 600;
+  color: #118707;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+/* .card .box .content .variation .icon {
+  color: red;
+  font-size: 20px;
+} */
+
+.card .box .content .buttons {
+  position: relative;
+  top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card .box .content .buttons Button {
+  background: #51d52414;
+  text-decoration: none;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card .box .content .buttons Button .Sell {
+  background: red;
+}
+
+/* .card .box .content .buttons Button:hover {
+  border: 2px solid #183c28;
+  background: #51d524c9;
+  transition: 0.5s;
+} */
