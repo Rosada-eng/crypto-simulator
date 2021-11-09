@@ -1,0 +1,74 @@
+* {
+  color: #fff;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container {
+  background-color: var(--richBlack);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 5px 2px rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5% 10%;
+  width: 100%;
+  height: 5em;
+  box-shadow: 0 px 2px rgba(0, 0, 0, 0.1);
+}
+
+.currentMoney {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: var(--golden);
+  width: 100%;
+  padding: 0 10%;
+  font-size: 1em;
+}
+
+.currentMoney p {
+  color: var(--richGreen);
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.brand img {
+  max-height: 2em;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 200;
+  color: #ecb242;
+}
+.login {
+  display: flex;
+  justify-content: space-between;
+  width: 7em;
+  margin-left: auto;
+  font-size: 1em;
+  color: var(--silver);
+  cursor: pointer;
+}
+
+.login p:hover {
+  transform: scale(1.2);
+  transition: 0.2s;
+  font-weight: 100;
+}

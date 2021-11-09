@@ -46,6 +46,7 @@ const Card = ({
               <p>{flutuation.toFixed(2).replace('.', ',')} % </p>
             </div>
           )}
+          {/* TODO: Fazer desativar botão de operations ao clicar fora do card! */}
           <div className="operations">
             {!activeForm ? (
               <div className="buttons">
