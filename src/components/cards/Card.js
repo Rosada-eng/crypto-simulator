@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../button/Button';
 import OperationForm from '../operationForm/OperationForm';
 import './card.css';
 
@@ -47,29 +46,25 @@ const Card = ({
               <p>{flutuation.toFixed(2).replace('.', ',')} % </p>
             </div>
           )}
-          {!activeForm ? (
-            <div className="buttons">
-              <Button name="Buy" onClick={() => setActiveForm('Buy')}></Button>
-              <Button
-                className="Sell"
-                name="Sell"
-                onClick={() => setActiveForm('Sell')}
-              ></Button>
-            </div>
-          ) : null}
           <div className="operations">
-            {activeForm ? (
-              <div className="operations">
-                <OperationForm
-                  cryptoId="btc"
-                  unitPrice={currentValue}
-                  operation={activeForm}
-                />
-                <button className="cancel" onClick={() => setActiveForm('')}>
-                  Cancel
+            {!activeForm ? (
+              <div className="buttons">
+                <button className="Buy" onClick={() => setActiveForm('Buy')}>
+                  Buy
+                </button>
+                <button className="Sell" onClick={() => setActiveForm('Sell')}>
+                  Sell
                 </button>
               </div>
-            ) : null}
+            ) : (
+              <OperationForm
+                className="operationForm"
+                cryptoId="btc"
+                unitPrice={currentValue}
+                operation={activeForm}
+                onClickAction={setActiveForm}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import React from 'react';
-import Button from '../button/Button';
 import db from '../../services/Db';
+import styled from './OperationForm.module.css';
 
-const OperationForm = ({ cryptoId, unitPrice, operation }) => {
+const OperationForm = ({ cryptoId, unitPrice, operation, onClickAction }) => {
   const [data, setData] = React.useState(null);
   const [quantity, setQuantity] = React.useState(0);
 
-  function buyAction() {
+  function tradeAction() {
     db.post('/broker/new_trade/', {
       user_id: 5, // virá do usuário logado --> //!Use Context
       crypto_id: cryptoId, // virá do cartão que o usuario selecionou //$(Pai)
@@ -20,12 +20,25 @@ const OperationForm = ({ cryptoId, unitPrice, operation }) => {
   }
 
   return (
-    <div>
+    <div className={styled.container}>
       <input
         type="number"
+        min={0}
+        step={0.001}
         onChange={(event) => setQuantity(event.target.value)}
       ></input>
-      <Button onClick={buyAction}>{operation}</Button>
+      <button
+        className={operation === 'Buy' ? styled.Buy : styled.Sell}
+        onClick={tradeAction}
+      >
+        {operation}
+      </button>
+      <button
+        className={`${styled.buttons} ${styled.cancelButton}`}
+        onClick={() => onClickAction('')}
+      >
+        Cancel
+      </button>
     </div>
   );
 };

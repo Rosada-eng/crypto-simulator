@@ -1,7 +1,17 @@
 .card {
+  --verdeEscuro: #143409;
+  --verde10: #173c0a;
+  --verde9-64: #235b0fa3;
+  --verde9: #235b0f;
+  --verde7: #3a981a;
+  --azulEscuro: #2c445c;
+  --azul10: #172330;
+  --azul9-64: #223548a3;
+  --azul9: #223548;
+  --azul7: #395978;
   position: relative;
   min-width: 240px;
-  height: 330px;
+  height: 340px;
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
@@ -27,9 +37,10 @@
 .card .box:hover {
   transform: translateY(-25px);
   box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
-  border-color: #235b0f;
+  border-color: #eec643a3;
 }
 
+/*! CONTENT */
 .card .box .content {
   padding: 30px 0px;
   text-align: center;
@@ -40,16 +51,12 @@
   top: 7.5px;
   right: 7.5px;
   font-size: 2em;
-  color: rgba(255, 255, 255, 0.05);
-  /* color: hsl(146.8, 52.9%, 16.5%); */
+  color: rgba(255, 255, 255, 0.1);
 }
 
 .card .box .content .name {
   font-size: 1.6em;
   color: rgba(255, 255, 255, 0.7);
-  /* color: #eec643; */
-  /* color: hsl(37.3, 100%, 60%); */
-
   z-index: 1;
   transition: 0.5s;
 }
@@ -57,9 +64,6 @@
 .card .box .content .bigName {
   font-size: 1.4em;
   color: rgba(255, 255, 255, 0.7);
-  /* color: #eec643; */
-  /* color: hsl(37.3, 100%, 60%); */
-
   z-index: 1;
   transition: 0.5s;
 }
@@ -69,14 +73,6 @@
   padding: 20px;
   z-index: 2;
 }
-
-/* .card .box .content .marketCap {
-  font-size: 0.8em;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
-  z-index: 1;
-  transition: 0.5s;
-} */
 
 .card .box .content .currentValue {
   font-size: 1.4em;
@@ -99,31 +95,54 @@
   font-size: 20px;
 } */
 
+/*! BUTTONS  */
 .card .box .content .buttons {
-  position: relative;
-  top: 20px;
   display: flex;
   justify-content: space-around;
 }
 
-.card .box .content .buttons Button {
-  background: #51d52414;
+.card .box .content .buttons button {
   text-decoration: none;
   border: none;
   padding: 8px 30px;
-  border-radius: 4px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 600;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  font-weight: 400;
   cursor: pointer;
   transition: 0.5s;
 }
 
-.card .box .content .buttons Button .Sell {
-  background: red;
+.card .box .content .buttons .Buy {
+  background: none;
+  border: 1px solid var(--verde9-64);
+  color: var(--verde7);
 }
 
-/* .card .box .content .buttons Button:hover {
-  border: 2px solid #183c28;
-  background: #51d524c9;
-  transition: 0.5s;
-} */
+.card .box .content .buttons .Buy:hover {
+  background: var(--verde10);
+  border: 1px solid var(--verde7);
+  color: #fff;
+  transition: 0.2s;
+}
+.card .box .content .buttons .Sell {
+  background: none;
+  border: 1px solid var(--azul9-64);
+  color: var(--azul7);
+}
+
+.card .box .content .buttons .Sell:hover {
+  background: var(--azul10);
+  border: 1px solid var(--azul7);
+  color: #fff;
+  transition: 0.2s;
+}
+
+/*! BUTTONS - operation */
+.card .box .content .operations {
+  position: relative;
+  top: 20px;
+  /* border: 2px solid red; */
+}

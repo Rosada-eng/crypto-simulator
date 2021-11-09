@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  justify-content: space-around;
+  grid-template: 'input buy' 'input cancel';
+  gap: 5px 5px;
+  padding: 0 5px;
+}
+
+.buttons {
+  text-decoration: none;
+  border: none;
+  padding: 4px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.Buy {
+  background: none;
+  border: 1px solid var(--verde9-64);
+  color: var(--verde7);
+  grid-area: buy;
+}
+
+.Sell {
+  background: none;
+  border: 1px solid var(--azul9-64);
+  color: var(--azul7);
+  grid-area: buy;
+}
+
+.cancelButton {
+  font-size: 10px;
+  grid-area: cancel;
+  background: none;
+  border: 1px solid #bebfc4a3;
+  color: #bebfc4;
+}
+
+.Buy:hover {
+  background: var(--verde10);
+  border: 1px solid var(--verde7);
+  color: #fff;
+  transition: 0.2s;
+  grid-area: buy;
+}
+
+.Sell:hover {
+  background: var(--azul10);
+  border: 1px solid var(--azul7);
+  color: #fff;
+  transition: 0.2s;
+  grid-area: buy;
+}
+
+.cancelButton:hover {
+  border: 1px solid #fff;
+  transition: 0.5s;
+  color: #fff;
+}
+
+input {
+  grid-area: input;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  max-width: 100px;
+  margin: 10px 0 10px 5px;
+  background: #c4c4c424;
+  box-shadow: inset -2px -2px 0 rgba(255, 255, 255, 0.1),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.1);
+  color: #bebfc4;
+}
