@@ -49,6 +49,7 @@
   align-items: center;
   height: 100%;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .brand img {
@@ -63,15 +64,19 @@
 .login {
   display: flex;
   justify-content: space-between;
-  width: 7em;
   margin-left: auto;
   font-size: 1em;
   color: var(--silver);
   cursor: pointer;
 }
 
-.login p:hover {
-  transform: scale(1.2);
+.link {
+  margin: 0 10px;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.link:hover {
+  transform: scale(1.1);
   transition: 0.2s;
   font-weight: 100;
 }

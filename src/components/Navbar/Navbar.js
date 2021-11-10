@@ -3,17 +3,24 @@ import styled from './Navbar.module.css';
 import { ReactComponent as Logo } from './dollar.svg';
 // import { ReactComponent as Wallet } from './wallet.svg';
 import { ReactComponent as Coin } from './dollar-coin.svg';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <div className={styled.container}>
       <div className={styled.header}>
-        <div className={styled.brand}>
+        <Link className={styled.brand} to="/">
           <Logo fill={'#ecb242c2'} />
           <p className={styled.title}>Crypto Simulator</p>
-        </div>
+        </Link>
         <div className={styled.login}>
-          <p>Sign in</p>/<p>Login</p>
+          <Link className={styled.link} to="/register">
+            Registrar
+          </Link>
+          <p> / </p>
+          <Link className={styled.link} to="/login">
+            Entrar
+          </Link>
         </div>
       </div>
 
