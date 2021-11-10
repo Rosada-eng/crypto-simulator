@@ -67,7 +67,7 @@
   color: #fff;
 }
 
-input {
+.inputForm {
   grid-area: input;
   border: none;
   border-radius: 5px;

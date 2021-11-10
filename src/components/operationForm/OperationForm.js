@@ -22,6 +22,7 @@ const OperationForm = ({ cryptoId, unitPrice, operation, onClickAction }) => {
   return (
     <div className={styled.container}>
       <input
+        className={styled.inputForm}
         type="number"
         min={0}
         step={0.001}

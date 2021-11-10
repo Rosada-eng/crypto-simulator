@@ -34,6 +34,7 @@ body {
   background: var(--richBlack);
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 body #root {
