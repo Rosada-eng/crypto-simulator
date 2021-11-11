@@ -1,8 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from './LoginForms.module.css';
+import { UserContext } from '../../UserContext';
 
 const LoginForms = () => {
+  const global = React.useContext(UserContext);
+
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  async function LogInUser(event) {
+    event.preventDefault();
+    global.userLogin(username, password);
+  }
   return (
     <div className={styled.container}>
       <div className={styled.box}>
@@ -17,6 +27,7 @@ const LoginForms = () => {
               id="username"
               type="text"
               placeholder="email@email.com"
+              onChange={(event) => setUsername(event.target.value)}
             ></input>
           </div>
           <div className={styled.password}>
@@ -28,15 +39,26 @@ const LoginForms = () => {
               id="password"
               type="password"
               placeholder="**********"
+              onChange={(event) => setPassword(event.target.value)}
             ></input>
           </div>
-          <input className={styled.send} type="submit" value="Entrar"></input>
+          <input
+            className={styled.send}
+            type="submit"
+            value="Entrar"
+            onClick={LogInUser}
+          ></input>
           <p className={styled.disclaimer}>
             Não tem uma conta?{' '}
             <Link className="signUp" to="/register">
               Registrar-se
             </Link>
           </p>
+          {global.loginError ? (
+            <p className={styled.error}>
+              Dados incorretos. Por favor, tente novamente.
+            </p>
+          ) : null}
         </form>
       </div>
     </div>

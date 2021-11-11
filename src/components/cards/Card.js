@@ -2,14 +2,7 @@ import React from 'react';
 import OperationForm from '../operationForm/OperationForm';
 import './card.css';
 
-const Card = ({
-  name,
-  marketCap,
-  ranking,
-  imgURL,
-  currentValue,
-  flutuation,
-}) => {
+const Card = ({ id, name, ranking, imgURL, currentValue, flutuation }) => {
   // flutuation, logo, description
   const [activeForm, setActiveForm] = React.useState('');
   function formatNumber(number) {
@@ -64,7 +57,7 @@ const Card = ({
             ) : (
               <OperationForm
                 className="operationForm"
-                cryptoId="btc"
+                cryptoId={id}
                 unitPrice={currentValue}
                 operation={activeForm}
                 onClickAction={setActiveForm}

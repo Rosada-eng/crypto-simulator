@@ -64,6 +64,7 @@
 .login {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-left: auto;
   font-size: 1em;
   color: var(--silver);
@@ -79,4 +80,9 @@
   transform: scale(1.1);
   transition: 0.2s;
   font-weight: 100;
+}
+
+.logged {
+  margin: 10px;
+  /* color: var(--golden); */
 }

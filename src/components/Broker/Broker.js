@@ -40,8 +40,8 @@ const Broker = () => {
           {data.map((coin) => (
             <Card
               key={coin.id}
+              id={coin.id}
               name={coin.name}
-              marketCap={coin.market_cap}
               ranking={coin.market_cap_rank}
               imgURL={coin.image}
               currentValue={coin.current_price}
