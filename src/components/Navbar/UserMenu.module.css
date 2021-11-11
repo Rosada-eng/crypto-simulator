@@ -1,0 +1,39 @@
+.menuBox {
+  position: absolute;
+  top: 75px;
+  right: 5%;
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--blackBackground);
+  border-radius: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: flex-start;
+  width: 90%;
+}
+
+.bar {
+  width: 90%;
+  border: 1px solid #eec643a5;
+  align-self: center;
+}
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--golden);
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  margin: 20px 0;
+}
+
+.logo {
+  margin-right: 10px;
+}
