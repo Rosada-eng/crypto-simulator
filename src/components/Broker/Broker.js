@@ -2,8 +2,8 @@ import React from 'react';
 import Card from '../cards/Card';
 import { GET_CRYPTOS_MARKET_DATA } from '../../services/Api';
 import styled from './Broker.module.css';
-import { ReactComponent as Arrow } from './right.svg';
-import { ReactComponent as LefterArrow } from './fast-forward.svg';
+import { ReactComponent as Arrow } from '../../assets/right.svg';
+import { ReactComponent as LefterArrow } from '../../assets/fast-forward.svg';
 
 const Broker = () => {
   const [page, setPage] = React.useState(1);

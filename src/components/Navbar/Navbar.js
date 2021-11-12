@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from './Navbar.module.css';
-import { ReactComponent as Logo } from './dollar.svg';
-import { ReactComponent as Coin } from './dollar-coin.svg';
+import { ReactComponent as Logo } from '../../assets/dollar.svg';
+import { ReactComponent as Coin } from '../../assets/dollar-coin.svg';
 import { ReactComponent as User } from '../../assets/account.svg';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../UserContext';

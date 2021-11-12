@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Wallet } from './wallet.svg';
+import { ReactComponent as Wallet } from '../../assets/wallet.svg';
 import { ReactComponent as Logout } from '../../assets/logout.svg';
 import styled from './UserMenu.module.css';
 import { UserContext } from '../../UserContext';
