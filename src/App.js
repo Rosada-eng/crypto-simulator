@@ -4,6 +4,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
+import WalletPage from './components/WalletPage';
 import { UserStorage } from './UserContext';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/wallet" element={<WalletPage />} />
         </Routes>
       </UserStorage>
     </BrowserRouter>

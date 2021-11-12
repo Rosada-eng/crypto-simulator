@@ -10,7 +10,7 @@ const UserMenu = () => {
   return (
     <div className={styled.menuBox}>
       <div className={styled.container}>
-        <Link to="/" className={styled.link}>
+        <Link to="/wallet" className={styled.link}>
           <Wallet className={styled.logo} fill={'#eec643'} /> Carteira
         </Link>
         <hr className={styled.bar} />

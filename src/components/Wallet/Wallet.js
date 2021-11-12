@@ -71,6 +71,31 @@ const Wallet = () => {
     }
   }
 
+  function getTotalAmount() {
+    let totalAmount = 0;
+    for (var coin in trades) {
+      totalAmount += trades[coin].amount;
+    }
+    return totalAmount;
+  }
+
+  function getTotalSpent() {
+    let totalSpent = 0;
+    for (var coin in trades) {
+      totalSpent += trades[coin].totalSpent;
+    }
+    return totalSpent;
+  }
+  function getTotalProfits() {
+    let totalProfit = 0;
+
+    for (var coin in trades) {
+      totalProfit += trades[coin].profit;
+    }
+
+    return totalProfit;
+  }
+
   React.useEffect(async () => {
     await global.autoLogin();
     if (global.login) {
@@ -82,6 +107,7 @@ const Wallet = () => {
       }
     } else {
       alert('Você precisa estar logado para acessar a carteira!');
+      global.navigate('/login');
     }
   }, []);
 
@@ -150,11 +176,17 @@ const Wallet = () => {
             </tbody>
             <tfoot>
               <tr>
+                <td>Total:</td>
+                <td>{formatNumber(getTotalAmount())}</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td>PRECO MEDIO TOTAL</td>
-                <td>LUCRO TOTAL</td>
+                <td>{formatNumber(getTotalSpent())}</td>
+                <td
+                  className={
+                    getTotalProfits() >= 0 ? styled.profit : styled.loss
+                  }
+                >
+                  {formatNumber(getTotalProfits())}
+                </td>
               </tr>
             </tfoot>
           </table>
