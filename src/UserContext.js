@@ -51,22 +51,21 @@ export const UserStorage = ({ children }) => {
     }
   }
 
-  React.useEffect(() => {
-    async function autoLogin() {
-      const username = window.localStorage.getItem('username');
-      if (username) {
-        try {
-          console.log('autoLogin');
-          await getUser(username);
-          setLogin(true);
-          setLoginError(false);
-        } catch {
-          setLogin(false);
-          userLogout();
-        }
+  async function autoLogin() {
+    const username = window.localStorage.getItem('username');
+    if (username) {
+      try {
+        await getUser(username);
+        setLogin(true);
+        setLoginError(false);
+        console.log('autoLogin com sucesso');
+      } catch {
+        setLogin(false);
+        userLogout();
       }
     }
-
+  }
+  React.useEffect(() => {
     autoLogin();
   }, [userLogout]);
   return (
@@ -77,6 +76,7 @@ export const UserStorage = ({ children }) => {
         login,
         setLogin,
         userLogin,
+        autoLogin,
         userLogout,
         navigate,
         loginError,

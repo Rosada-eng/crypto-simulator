@@ -3,7 +3,13 @@ import db from '../../services/Db';
 import styled from './OperationForm.module.css';
 import { UserContext } from '../../UserContext';
 
-const OperationForm = ({ cryptoId, unitPrice, operation, onClickAction }) => {
+const OperationForm = ({
+  cryptoId,
+  cryptoName,
+  unitPrice,
+  operation,
+  onClickAction,
+}) => {
   const global = React.useContext(UserContext);
   const [quantity, setQuantity] = React.useState(0);
 
@@ -14,7 +20,8 @@ const OperationForm = ({ cryptoId, unitPrice, operation, onClickAction }) => {
           .post('/broker/new_trade/', {
             user_id: global.data.id, // virá do usuário logado --> //!Use Context
             crypto_id: cryptoId, // virá do cartão que o usuario selecionou //$(Pai)
-            unit_price: unitPrice, // virá do cartão que o usuário selecionou
+            crypto_name: cryptoName, // virá do cartão que o usuario selecionou //$(Pai)
+            unit_price: unitPrice, // virá do cartão que o usuário selecionou //$(Pai)
             quantity:
               operation === 'Buy'
                 ? parseFloat(quantity)

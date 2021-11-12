@@ -58,6 +58,7 @@ const Card = ({ id, name, ranking, imgURL, currentValue, flutuation }) => {
               <OperationForm
                 className="operationForm"
                 cryptoId={id}
+                cryptoName={name}
                 unitPrice={currentValue}
                 operation={activeForm}
                 onClickAction={setActiveForm}

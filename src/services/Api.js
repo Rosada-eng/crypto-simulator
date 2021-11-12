@@ -14,6 +14,11 @@ export function GET_CRYPTOS_PRICE_ONLY(idsArray) {
       /simple/price/<str:ids>?vs_currencies=<str:id>
           -- Pega o valor das criptomoedas informadas no valor da moeda informada (usd)
           opt: Tamanho de mercado / vol em 24 hr / variacao em 24 / last_updated
+
+      returns: {
+        "bitcoin": {"usd": 64247},
+        "ethereum": {"usd": 4675.77}
+      }
     */
   return api
     .get(`simple/price?ids=${idsArray.join('%2C')}&vs_currencies=usd`)

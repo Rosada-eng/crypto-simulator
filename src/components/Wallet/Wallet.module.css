@@ -11,7 +11,7 @@
 .currentMoney,
 .subtitle,
 table td {
-  font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: var(--font);
 }
 .header {
   display: flex;
@@ -112,7 +112,7 @@ table thead td:last-child {
 
 table tbody {
   width: 100%;
-  font-size: 0.8em;
+  font-size: 1em;
   background: var(--blackBackground);
 }
 table tbody tr {
@@ -122,10 +122,33 @@ table tbody tr {
 table tbody td {
   padding: 10px 0;
   align-items: center;
+  color: var(--silver);
 }
 
 table tbody tr td:nth-child(1) {
   text-align: left;
   font-size: 1em;
   padding: 10px 10px;
+}
+.precoAtual {
+  color: var(--golden);
+}
+.precoMedio {
+  /* color: steelblue; */
+  font-weight: 600;
+}
+.profit {
+  color: var(--verde7);
+  font-weight: 600;
+}
+
+.loss {
+  color: #fd0e35;
+  font-weight: 600;
+}
+
+table tfoot td {
+  /* padding: 80px 0; */
+  /* background: steelblue; */
+  /* padding: 20px; */
 }
