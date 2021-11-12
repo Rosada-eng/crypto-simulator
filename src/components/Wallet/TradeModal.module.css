@@ -1,0 +1,87 @@
+.modal {
+  position: absolute;
+  top: -8px;
+  right: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--blackBackground);
+  border: 1px solid var(--golden);
+  border-radius: 10px;
+}
+.modal forms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 10px;
+  height: 4.5em;
+}
+
+.modal form label {
+  margin: 0 5px;
+}
+
+.container {
+  display: flex;
+  width: 12em;
+}
+
+.inputBar {
+  width: 8em;
+  color: var(--richBlack);
+  padding: 0 5px;
+  margin: 0 5px;
+}
+
+.Depositar {
+  color: var(--richGreen);
+  text-decoration: none;
+  border: none;
+  width: 70px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s;
+  background: #eec643a6;
+}
+
+.Depositar:hover {
+  background: var(--verde10);
+  border: 1px solid var(--verde7);
+  color: #fff;
+  transition: 0.2s;
+}
+.Retirar {
+  color: var(--azul10);
+  text-decoration: none;
+  border: none;
+  width: 70px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s;
+  background: #eec643a6;
+}
+
+.Retirar:hover {
+  background: var(--azul10);
+  border: 1px solid var(--azul7);
+  color: #fff;
+  transition: 0.2s;
+}
+
+label,
+input,
+p {
+  font-family: var(--font);
+}

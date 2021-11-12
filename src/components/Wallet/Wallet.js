@@ -5,12 +5,15 @@ import depositIcon from '../../assets/deposit_green_bg.png';
 import { UserContext } from '../../UserContext';
 import db from '../../services/Db';
 import { GET_CRYPTOS_PRICE_ONLY } from '../../services/Api';
+import TradeModal from './TradeModal';
 
 const Wallet = () => {
   const global = React.useContext(UserContext);
   const [showDeposit, setShowDeposit] = React.useState(false);
   const [showWithdraw, setShowWithdraw] = React.useState(false);
   const [trades, setTrades] = React.useState(null);
+  const [depositModal, setDepositModal] = React.useState(false);
+  const [withdrawModal, setWithdrawModal] = React.useState(false);
 
   function formatNumber(number) {
     if (number >= 1e6) {
@@ -115,102 +118,111 @@ const Wallet = () => {
     buildWallet();
   }, [global.login]);
 
-  async function tradeMoneyToAccount(user_id, amount) {
-    const edited_user = await db
-      .post(`trade_to_account/17/`, { amount: 1000 })
-      .then((response) => response.data);
-
-    if (edited_user) {
-      global.setData(edited_user);
-    }
-  }
-  return (
-    <div className={styled.container}>
-      <div className={styled.header}>
-        <h1 className={styled.investor}>Guilherme</h1>
-        <div className={styled.resume}>
-          <p className={styled.currentMoney}>
-            $ {formatNumber(global.data.current_money)}
-          </p>
-          <div className={styled.transactions}>
-            <div className={styled.operation}>
-              <img
-                src={depositIcon}
-                className={styled.icon}
-                alt={'Depositar dinheiro'}
-                onMouseEnter={() => setShowDeposit(true)}
-                onMouseLeave={() => setShowDeposit(false)}
-                onClick={tradeMoneyToAccount}
-              />
-              {showDeposit ? (
-                <p className={styled.subtitle}>Depositar</p>
-              ) : null}
-            </div>
-            <div className={styled.operation}>
-              <img
-                src={withdrawIcon}
-                className={styled.icon}
-                alt={'Retirar dinheiro'}
-                onMouseEnter={() => setShowWithdraw(true)}
-                onMouseLeave={() => setShowWithdraw(false)}
-                onClick={tradeMoneyToAccount}
-              />
-              {showWithdraw ? <p className={styled.subtitle}>Retirar</p> : null}
+  if (global.login) {
+    return (
+      <div className={styled.container}>
+        <div className={styled.header}>
+          <h1 className={styled.investor}>{global.data.firstName}</h1>
+          <div className={styled.resume}>
+            <p className={styled.currentMoney}>
+              $ {formatNumber(global.data.current_money)}
+            </p>
+            <div className={styled.transactions}>
+              <div className={styled.operation}>
+                <img
+                  src={depositIcon}
+                  className={styled.icon}
+                  alt={'Depositar dinheiro'}
+                  onMouseEnter={() => setShowDeposit(true)}
+                  onMouseLeave={() => {
+                    setShowDeposit(false);
+                  }}
+                  onClick={() => {
+                    setDepositModal(!depositModal);
+                    setWithdrawModal(false);
+                  }}
+                />
+                {showDeposit ? (
+                  <p className={styled.subtitle}>Depositar</p>
+                ) : null}
+                {depositModal ? <TradeModal operation="Depositar" /> : null}
+              </div>
+              <div className={styled.operation}>
+                <img
+                  src={withdrawIcon}
+                  className={styled.icon}
+                  alt={'Retirar dinheiro'}
+                  onMouseEnter={() => setShowWithdraw(true)}
+                  onMouseLeave={() => {
+                    setShowWithdraw(false);
+                  }}
+                  onClick={() => {
+                    setWithdrawModal(!withdrawModal);
+                    setDepositModal(false);
+                  }}
+                />
+                {showWithdraw ? (
+                  <p className={styled.subtitle}>Retirar</p>
+                ) : null}
+                {withdrawModal ? <TradeModal operation="Retirar" /> : null}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={styled.tableBox}>
-        {trades ? (
-          <table className={styled.table}>
-            <thead>
-              <tr>
-                <td>Nome</td>
-                <td>qtd</td>
-                <td>Preço Atual ($)</td>
-                <td>Preço Médio ($)</td>
-                <td>Lucro ($)</td>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(trades).map((coin) => (
-                <tr key={coin}>
-                  <td>{trades[coin].name}</td>
-                  <td>{formatNumber(trades[coin].amount)}</td>
-                  <td className={styled.precoAtual}>{`${formatNumber(
-                    trades[coin].currentPrice,
-                  )}`}</td>
-                  <td className={styled.precoMedio}>{`${formatNumber(
-                    trades[coin].totalSpent / trades[coin].amount,
-                  )}`}</td>
+        <div className={styled.tableBox}>
+          {trades ? (
+            <table className={styled.table}>
+              <thead>
+                <tr>
+                  <td>Nome</td>
+                  <td>qtd</td>
+                  <td>Preço Atual ($)</td>
+                  <td>Preço Médio ($)</td>
+                  <td>Lucro ($)</td>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(trades).map((coin) => (
+                  <tr key={coin}>
+                    <td>{trades[coin].name}</td>
+                    <td>{formatNumber(trades[coin].amount)}</td>
+                    <td className={styled.precoAtual}>{`${formatNumber(
+                      trades[coin].currentPrice,
+                    )}`}</td>
+                    <td className={styled.precoMedio}>{`${formatNumber(
+                      trades[coin].totalSpent / trades[coin].amount,
+                    )}`}</td>
+                    <td
+                      className={
+                        trades[coin].profit >= 0 ? styled.profit : styled.loss
+                      }
+                    >{`${formatNumber(trades[coin].profit)}`}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Total:</td>
+                  <td>{formatNumber(getTotalAmount())}</td>
+                  <td></td>
+                  <td>{formatNumber(getTotalSpent())}</td>
                   <td
                     className={
-                      trades[coin].profit >= 0 ? styled.profit : styled.loss
+                      getTotalProfits() >= 0 ? styled.profit : styled.loss
                     }
-                  >{`${formatNumber(trades[coin].profit)}`}</td>
+                  >
+                    {formatNumber(getTotalProfits())}
+                  </td>
                 </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Total:</td>
-                <td>{formatNumber(getTotalAmount())}</td>
-                <td></td>
-                <td>{formatNumber(getTotalSpent())}</td>
-                <td
-                  className={
-                    getTotalProfits() >= 0 ? styled.profit : styled.loss
-                  }
-                >
-                  {formatNumber(getTotalProfits())}
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        ) : null}
+              </tfoot>
+            </table>
+          ) : null}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Wallet;
