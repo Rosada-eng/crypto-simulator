@@ -115,12 +115,23 @@ const Wallet = () => {
     buildWallet();
   }, [global.login]);
 
+  async function tradeMoneyToAccount(user_id, amount) {
+    const edited_user = await db
+      .post(`trade_to_account/17/`, { amount: 1000 })
+      .then((response) => response.data);
+
+    if (edited_user) {
+      global.setData(edited_user);
+    }
+  }
   return (
     <div className={styled.container}>
       <div className={styled.header}>
         <h1 className={styled.investor}>Guilherme</h1>
         <div className={styled.resume}>
-          <p className={styled.currentMoney}>$ 127.653,58</p>
+          <p className={styled.currentMoney}>
+            $ {formatNumber(global.data.current_money)}
+          </p>
           <div className={styled.transactions}>
             <div className={styled.operation}>
               <img
@@ -129,6 +140,7 @@ const Wallet = () => {
                 alt={'Depositar dinheiro'}
                 onMouseEnter={() => setShowDeposit(true)}
                 onMouseLeave={() => setShowDeposit(false)}
+                onClick={tradeMoneyToAccount}
               />
               {showDeposit ? (
                 <p className={styled.subtitle}>Depositar</p>
@@ -141,6 +153,7 @@ const Wallet = () => {
                 alt={'Retirar dinheiro'}
                 onMouseEnter={() => setShowWithdraw(true)}
                 onMouseLeave={() => setShowWithdraw(false)}
+                onClick={tradeMoneyToAccount}
               />
               {showWithdraw ? <p className={styled.subtitle}>Retirar</p> : null}
             </div>

@@ -134,7 +134,6 @@ table tbody tr td:nth-child(1) {
   color: var(--golden);
 }
 .precoMedio {
-  /* color: steelblue; */
   font-weight: 600;
 }
 .profit {
@@ -148,10 +147,12 @@ table tbody tr td:nth-child(1) {
 }
 
 table tfoot td {
+  color: #fff;
   padding: 10px 0;
   font-weight: 600;
 }
 
 table tfoot td:nth-child(1) {
   text-align: left;
+  font-weight: 600;
 }
