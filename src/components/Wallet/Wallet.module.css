@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 6em;
+  width: 90%;
+}
+
+.investor,
+.currentMoney,
+.subtitle,
+table td {
+  font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 2.5em 0;
+  flex-wrap: wrap;
+}
+.investor {
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.resume {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20em;
+  border-radius: 10px;
+  padding: 7px 5px;
+  background: var(--blackBackground);
+  border: 1px solid var(--golden);
+}
+
+.currentMoney {
+  font-size: 1.5em;
+  color: var(--golden);
+}
+
+.transactions {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.operation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  position: relative;
+  margin: 0 5px;
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.subtitle {
+  position: absolute;
+  bottom: -2.5em;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 5px;
+  background: var(--blackBackground);
+  border-radius: 5px;
+  color: var(--golden);
+}
+.tableBox {
+  width: 100%;
+  height: 100%;
+  background: var(--blackBackground);
+  padding: 10px;
+  border-radius: 10px;
+}
+table {
+  color: #fff;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0 10px;
+}
+
+table td {
+  text-align: center;
+  align-content: center;
+}
+
+table thead td {
+  font-weight: 600;
+  padding: 15px 5px;
+  background: #eecc43a6;
+}
+
+table thead td:nth-child(1) {
+  border-top-left-radius: 10px;
+}
+table thead td:last-child {
+  border-top-right-radius: 10px;
+}
+
+table tbody {
+  width: 100%;
+  font-size: 0.8em;
+  background: var(--blackBackground);
+}
+table tbody tr {
+  border-bottom: 1px solid var(--silver);
+  padding: 0 100px;
+}
+table tbody td {
+  padding: 10px 0;
+  align-items: center;
+}
+
+table tbody tr td:nth-child(1) {
+  text-align: left;
+  font-size: 1em;
+  padding: 10px 10px;
+}
