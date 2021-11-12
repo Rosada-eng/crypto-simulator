@@ -39,7 +39,7 @@ const Navbar = () => {
       {global.login ? (
         <div className={styled.currentMoney}>
           <Coin fill={'1c1a13'} />
-          <p>{`$ ${global.data.initial_money.toLocaleString('pt-BR', {
+          <p>{`$ ${global.data.current_money.toLocaleString('pt-BR', {
             minimumFractionDigits: 2,
           })}`}</p>
         </div>

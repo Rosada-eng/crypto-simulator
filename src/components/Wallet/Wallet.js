@@ -96,20 +96,24 @@ const Wallet = () => {
     return totalProfit;
   }
 
-  React.useEffect(async () => {
-    await global.autoLogin();
-    if (global.login) {
-      const allTrades = await getAllTrades(global.data.id);
-      const filteredTrades = await calculateProfits(allTrades);
-      if (filteredTrades) {
-        console.log(filteredTrades);
-        setTrades(filteredTrades);
+  React.useEffect(() => {
+    async function buildWallet() {
+      await global.autoLogin();
+      if (global.login) {
+        const allTrades = await getAllTrades(global.data.id);
+        const filteredTrades = await calculateProfits(allTrades);
+        if (filteredTrades) {
+          console.log(filteredTrades);
+          setTrades(filteredTrades);
+        }
+      } else {
+        alert('Você precisa estar logado para acessar a carteira!');
+        global.navigate('/login');
       }
-    } else {
-      alert('Você precisa estar logado para acessar a carteira!');
-      global.navigate('/login');
     }
-  }, []);
+
+    buildWallet();
+  }, [global.login]);
 
   return (
     <div className={styled.container}>

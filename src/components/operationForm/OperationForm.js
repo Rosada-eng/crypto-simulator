@@ -34,8 +34,23 @@ const OperationForm = ({
                 operation === 'Buy' ? 'COMPRA: ' : 'VENDA: '
               }${quantity}x ${cryptoId} por $${unitPrice * quantity}`,
             );
+            if (operation === 'Buy') {
+              global.setData({
+                ...global.data,
+                current_money:
+                  parseFloat(global.data.current_money) -
+                  parseFloat(unitPrice) * parseFloat(quantity),
+              });
+            } else {
+              global.setData({
+                ...global.data,
+                current_money:
+                  parseFloat(global.data.current_money) +
+                  parseFloat(unitPrice) * parseFloat(quantity),
+              });
+            }
           });
-        if (response && response.status != 200) {
+        if (response && response.status !== 200) {
           console.log(
             'Não foi possível realizar a transação. Por favor, tente novamente.',
           );
