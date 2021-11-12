@@ -10,7 +10,7 @@
   border: 1px solid var(--golden);
   border-radius: 10px;
 }
-.modal forms {
+.modal form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;

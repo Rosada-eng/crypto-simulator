@@ -27,6 +27,8 @@ const RegisterForms = () => {
         window.localStorage.setItem('username', created_user.email);
         global.setLogin(true);
         global.setLoginError(false);
+        alert(`Parabéns!! Você começará com $10 mil para simular alguns investimentos.
+Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar sua Carteira.`);
         global.navigate('/');
       }
     } catch {

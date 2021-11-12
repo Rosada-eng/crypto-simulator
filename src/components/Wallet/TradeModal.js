@@ -19,7 +19,7 @@ const TradeModal = ({ operation }) => {
   }
   return (
     <div className={styled.modal}>
-      <forms>
+      <form>
         <label htmlFor="value">Valor: </label>
         <div className={styled.container}>
           <p>$</p>
@@ -48,7 +48,7 @@ const TradeModal = ({ operation }) => {
             />
           )}
         </div>
-      </forms>
+      </form>
     </div>
   );
 };
