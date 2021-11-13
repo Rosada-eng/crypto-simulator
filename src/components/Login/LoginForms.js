@@ -17,7 +17,7 @@ const LoginForms = () => {
     <div className={styled.container}>
       <div className={styled.box}>
         <h2 className={styled.title}>LoginForms</h2>
-        <form className={styled.form}>
+        <form className={styled.form} onSubmit={LogInUser}>
           <div className={styled.username}>
             <label className="Userlabel" htmlFor="username">
               Usuário:{' '}
@@ -26,7 +26,9 @@ const LoginForms = () => {
               className={styled.inputField}
               id="username"
               type="text"
+              value={username}
               placeholder="email@email.com"
+              required
               onChange={(event) => setUsername(event.target.value)}
             ></input>
           </div>
@@ -38,16 +40,15 @@ const LoginForms = () => {
               className={styled.inputField}
               id="password"
               type="password"
+              value={password}
               placeholder="**********"
+              required
               onChange={(event) => setPassword(event.target.value)}
             ></input>
           </div>
-          <input
-            className={styled.send}
-            type="submit"
-            value="Entrar"
-            onClick={LogInUser}
-          ></input>
+          <button className={styled.send} type="submit" value="Entrar">
+            Entrar
+          </button>
           <p className={styled.disclaimer}>
             Não tem uma conta?{' '}
             <Link className="signUp" to="/register">

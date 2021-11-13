@@ -13,7 +13,8 @@ const OperationForm = ({
   const global = React.useContext(UserContext);
   const [quantity, setQuantity] = React.useState(0);
 
-  async function tradeAction() {
+  async function tradeAction(event) {
+    event.preventDefault();
     if (global.login) {
       try {
         const response = await db
@@ -70,18 +71,17 @@ const OperationForm = ({
   }
 
   return (
-    <div className={styled.container}>
+    <form className={styled.container} onSubmit={tradeAction}>
       <input
         className={styled.inputForm}
         type="number"
         min={0}
         step={0.00001}
+        value={quantity}
         onChange={(event) => setQuantity(event.target.value)}
+        required
       ></input>
-      <button
-        className={operation === 'Buy' ? styled.Buy : styled.Sell}
-        onClick={tradeAction}
-      >
+      <button className={operation === 'Buy' ? styled.Buy : styled.Sell}>
         {operation}
       </button>
       <button
@@ -90,7 +90,7 @@ const OperationForm = ({
       >
         Cancel
       </button>
-    </div>
+    </form>
   );
 };
 

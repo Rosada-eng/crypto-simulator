@@ -80,6 +80,16 @@
   transition: 0.2s;
 }
 
+.withdrawTrade {
+  font-size: 15px;
+  position: absolute;
+  width: 100%;
+  color: #fd0e35;
+  left: 18em;
+  top: 42px;
+  word-wrap: nowrap;
+}
+
 label,
 input,
 p {

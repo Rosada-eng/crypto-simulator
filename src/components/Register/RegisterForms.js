@@ -39,12 +39,12 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
 
   React.useEffect(() => {
     global.setLoginError(false);
-  }, [global]);
+  }, []);
   return (
     <div className={styled.container}>
       <div className={styled.box}>
         <h2 className={styled.title}>Cadastro</h2>
-        <form className={styled.form}>
+        <form className={styled.form} onSubmit={RegisterUser}>
           <div className={styled.firstName}>
             <label className="firstNameLabel" htmlFor="firstName">
               Nome:{' '}
@@ -54,6 +54,7 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
               id="firstName"
               type="text"
               placeholder="Bárbara"
+              required
               onChange={(event) => setFirstName(event.target.value)}
             ></input>
           </div>
@@ -67,6 +68,7 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
               type="text"
               placeholder="Agena"
               onChange={(event) => setLastName(event.target.value)}
+              required
             ></input>
           </div>
           <div className={styled.email}>
@@ -76,9 +78,10 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
             <input
               className={styled.inputField}
               id="email"
-              type="text"
+              type="email"
               placeholder="barbara.agena@insper.edu.br"
               onChange={(event) => setEmail(event.target.value)}
+              required
             ></input>
           </div>
           <div className={styled.password}>
@@ -90,17 +93,13 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
               id="password"
               type="password"
               placeholder="**********"
+              required
               onChange={(event) => setPassword(event.target.value)}
             ></input>
           </div>
-          <input
-            className={styled.send}
-            type="submit"
-            value="Registrar"
-            onClick={RegisterUser}
-            // TODO: Fazer habilitar somente depois de preencher os campos
-            // disabled={}
-          ></input>
+          <button className={styled.send} value="Registrar">
+            Registrar
+          </button>
           {global.loginError ? (
             <p className={styled.error}>
               Dados incorretos ou já existentes. Por favor, tente novamente.
