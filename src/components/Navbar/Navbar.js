@@ -13,7 +13,7 @@ const Navbar = () => {
   const node = React.useRef();
 
   const handleClick = (e) => {
-    if (node.current.contains(e.target)) {
+    if (global.login && node.current.contains(e.target)) {
       // dentro do click -- Não faz nada
       return;
     } else {
