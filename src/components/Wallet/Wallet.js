@@ -52,7 +52,6 @@ const Wallet = () => {
         }
         return filtered;
       }, {});
-      console.log(result);
       return result;
     }
 
@@ -61,15 +60,12 @@ const Wallet = () => {
     const currentPrices = await GET_CRYPTOS_PRICE_ONLY(Object.keys(wallet));
 
     if (currentPrices) {
-      console.log(currentPrices);
       for (var coin in wallet) {
-        console.log(coin);
         wallet[coin]['currentPrice'] = currentPrices[coin]['usd'];
         wallet[coin]['profit'] =
           wallet[coin]['amount'] * wallet[coin]['currentPrice'] -
           wallet[coin]['totalSpent'];
       }
-      console.log('final :', wallet);
       return wallet;
     }
   }
@@ -101,12 +97,14 @@ const Wallet = () => {
 
   React.useEffect(() => {
     async function buildWallet() {
-      await global.autoLogin();
+      console.log('antes', global);
+      const logged = await global.autoLogin();
+      console.log('depois', global);
       if (global.login) {
+        console.log('Logou');
         const allTrades = await getAllTrades(global.data.id);
         const filteredTrades = await calculateProfits(allTrades);
         if (filteredTrades) {
-          console.log(filteredTrades);
           setTrades(filteredTrades);
         }
       } else {
@@ -116,7 +114,7 @@ const Wallet = () => {
     }
 
     buildWallet();
-  }, [global.login]);
+  }, []);
 
   if (global.login) {
     return (

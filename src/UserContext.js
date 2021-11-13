@@ -41,7 +41,6 @@ export const UserStorage = ({ children }) => {
       } else {
         setLogin(false);
         setLoginError(true);
-        console.log('Exibir mensagem de senha ou usuário errados!');
       }
     } catch (err) {
       console.log(err);

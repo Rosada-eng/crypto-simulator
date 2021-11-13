@@ -10,6 +10,23 @@ import UserMenu from './UserMenu.js';
 const Navbar = () => {
   const global = React.useContext(UserContext);
   const [menu, setMenu] = React.useState(false);
+  const node = React.useRef();
+
+  const handleClick = (e) => {
+    if (node.current.contains(e.target)) {
+      // dentro do click -- Não faz nada
+      return;
+    } else {
+      setMenu(false);
+    }
+  };
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, []);
   return (
     <div className={styled.container}>
       <div className={styled.header}>
@@ -18,7 +35,12 @@ const Navbar = () => {
           <p className={styled.title}>Crypto Simulator</p>
         </Link>
         {global.login && global.data ? (
-          <div className={styled.login} onClick={() => setMenu(!menu)}>
+          <div
+            ref={node}
+            className={styled.login}
+            onClick={() => setMenu(!menu)}
+            onMouse
+          >
             <p className={styled.logged}>{global.data.first_name}</p>
             <User className={styled.logged} fill={'#ecb242'} />
             {menu ? <UserMenu /> : null}
