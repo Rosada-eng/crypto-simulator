@@ -224,7 +224,7 @@ const Wallet = () => {
               </tfoot>
             </table>
           ) : (
-            <LoadingBar />
+            <LoadingBar left={'45%'} top={'60%'} width={50} />
           )}
         </div>
       </div>

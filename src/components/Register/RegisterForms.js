@@ -2,7 +2,6 @@ import React from 'react';
 import db from '../../services/Db';
 import styled from './RegisterForms.module.css';
 import { UserContext } from '../../UserContext';
-import LoadingBar from '../LoadingBar/LoadingBar';
 
 const RegisterForms = () => {
   const [firstName, setFirstName] = React.useState('');

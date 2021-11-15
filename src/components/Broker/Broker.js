@@ -10,15 +10,20 @@ import LoadingBar from '../LoadingBar/LoadingBar';
 const Broker = () => {
   const [page, setPage] = React.useState(1);
   const [data, setData] = React.useState(false);
-  const { loading } = React.useContext(UserContext);
+  const { loading, setLoading } = React.useContext(UserContext);
   React.useEffect(() => {
-    GET_CRYPTOS_MARKET_DATA(page).then((resp) => setData(resp));
+    setLoading(true);
+    GET_CRYPTOS_MARKET_DATA(page).then((resp) => {
+      setData(resp);
+      setLoading(false);
+    });
   }, [page]);
   return (
     <section>
       {data ? (
         <div className={styled.cardsContainer}>
           <div className={styled.arrows}>
+            {loading ? <LoadingBar top={10} left={-30} width={30} /> : null}
             <LefterArrow
               className={styled.lefterArrow}
               fill={'#eec643'}
@@ -55,7 +60,7 @@ const Broker = () => {
           </ul>
         </div>
       ) : (
-        <LoadingBar />
+        <LoadingBar top={'50%'} left={'45%'} width={50} />
       )}
     </section>
   );
