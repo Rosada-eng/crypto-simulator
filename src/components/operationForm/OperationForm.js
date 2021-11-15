@@ -67,6 +67,7 @@ const OperationForm = ({
       }
     } else {
       alert('Você precisa estar logado para realizar uma transação!');
+      global.navigate('/login');
     }
   }
 
