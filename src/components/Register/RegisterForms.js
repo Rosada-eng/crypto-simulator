@@ -2,6 +2,7 @@ import React from 'react';
 import db from '../../services/Db';
 import styled from './RegisterForms.module.css';
 import { UserContext } from '../../UserContext';
+import LoadingBar from '../LoadingBar/LoadingBar';
 
 const RegisterForms = () => {
   const [firstName, setFirstName] = React.useState('');
@@ -53,7 +54,7 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
               className={styled.inputField}
               id="firstName"
               type="text"
-              placeholder="Bárbara"
+              placeholder="Satoshi"
               required
               onChange={(event) => setFirstName(event.target.value)}
             ></input>
@@ -66,7 +67,7 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
               className={styled.inputField}
               id="lastName"
               type="text"
-              placeholder="Agena"
+              placeholder="Nakamoto"
               onChange={(event) => setLastName(event.target.value)}
               required
             ></input>
@@ -79,7 +80,7 @@ Caso queira, você pode simular depósitos e saques na sua conta. Basta acessar 
               className={styled.inputField}
               id="email"
               type="email"
-              placeholder="barbara.agena@insper.edu.br"
+              placeholder="satoshi.nakamoto@bitcoin.com"
               onChange={(event) => setEmail(event.target.value)}
               required
             ></input>

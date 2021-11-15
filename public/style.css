@@ -39,4 +39,6 @@ body {
 
 body #root {
   width: 90%;
+  height: 100vh;
+  position: relative;
 }

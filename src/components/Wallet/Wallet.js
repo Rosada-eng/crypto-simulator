@@ -6,6 +6,7 @@ import { UserContext } from '../../UserContext';
 import db from '../../services/Db';
 import { GET_CRYPTOS_PRICE_ONLY } from '../../services/Api';
 import TradeModal from './TradeModal';
+import LoadingBar from '../LoadingBar/LoadingBar';
 
 const Wallet = () => {
   const global = React.useContext(UserContext);
@@ -97,6 +98,7 @@ const Wallet = () => {
 
   React.useEffect(() => {
     async function buildWallet() {
+      global.setLoading(true);
       console.log('antes', global);
       const logged = await global.autoLogin();
       console.log('depois', global);
@@ -113,14 +115,21 @@ const Wallet = () => {
       }
     }
 
-    buildWallet();
+    try {
+      global.setLoading(true);
+      buildWallet();
+    } catch {
+      console.log('Não foi possível obter a carteira');
+    } finally {
+      global.setLoading(false);
+    }
   }, []);
 
   if (global.login) {
     return (
       <div className={styled.container}>
         <div className={styled.header}>
-          <h1 className={styled.investor}>{global.data.firstName}</h1>
+          <h1 className={styled.investor}>{global.data.first_name}</h1>
           <div className={styled.resume}>
             <p className={styled.currentMoney}>
               $ {formatNumber(global.data.current_money)}
@@ -214,7 +223,9 @@ const Wallet = () => {
                 </tr>
               </tfoot>
             </table>
-          ) : null}
+          ) : (
+            <LoadingBar />
+          )}
         </div>
       </div>
     );

@@ -8,6 +8,7 @@ export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null); // Guarda as informações do usuario
   const [login, setLogin] = React.useState(null); // Guarda o estado true/false se tiver logado
   const [loginError, setLoginError] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate(); // Função para mudar a página ao término de alguma ação
 
   const userLogout = React.useCallback(
@@ -33,6 +34,7 @@ export const UserStorage = ({ children }) => {
   async function userLogin(username, password) {
     try {
       const user = await getUser(username);
+      setLoading(true);
 
       if (user && user.password === password) {
         setLogin(true);
@@ -47,6 +49,8 @@ export const UserStorage = ({ children }) => {
       setLogin(false);
       setLoginError(true);
       console.log('Algo deu errado!');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -54,13 +58,16 @@ export const UserStorage = ({ children }) => {
     const username = window.localStorage.getItem('username');
     if (username) {
       try {
+        setLoginError(false);
+        setLoading(true);
         await getUser(username);
         setLogin(true);
-        setLoginError(false);
         console.log('autoLogin com sucesso');
       } catch {
         setLogin(false);
         userLogout();
+      } finally {
+        setLoading(false);
       }
     }
   }
@@ -76,6 +83,8 @@ export const UserStorage = ({ children }) => {
         setLogin,
         userLogin,
         autoLogin,
+        loading,
+        setLoading,
         userLogout,
         navigate,
         loginError,
