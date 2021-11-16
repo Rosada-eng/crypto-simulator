@@ -29,7 +29,6 @@ const OperationForm = ({
                 : -parseFloat(quantity), // virá de input do usuario
           })
           .then((response) => {
-            console.log(response);
             alert(
               `Operação realizada com sucesso!\n${
                 operation === 'Buy' ? 'COMPRA: ' : 'VENDA: '

@@ -21,7 +21,6 @@ const RegisterForms = () => {
           password: password,
         })
         .then((response) => response.data);
-      console.log(created_user);
       if (created_user) {
         global.setData(created_user);
         window.localStorage.setItem('username', created_user.email);

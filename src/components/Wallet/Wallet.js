@@ -99,11 +99,8 @@ const Wallet = () => {
   React.useEffect(() => {
     async function buildWallet() {
       global.setLoading(true);
-      console.log('antes', global);
-      const logged = await global.autoLogin();
-      console.log('depois', global);
+      await global.autoLogin();
       if (global.login) {
-        console.log('Logou');
         const allTrades = await getAllTrades(global.data.id);
         const filteredTrades = await calculateProfits(allTrades);
         if (filteredTrades) {
