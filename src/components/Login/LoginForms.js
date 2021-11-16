@@ -16,7 +16,7 @@ const LoginForms = () => {
   return (
     <div className={styled.container}>
       <div className={styled.box}>
-        <h2 className={styled.title}>LoginForms</h2>
+        <h2 className={styled.title}>Login</h2>
         <form className={styled.form} onSubmit={LogInUser}>
           <div className={styled.username}>
             <label className="Userlabel" htmlFor="username">
