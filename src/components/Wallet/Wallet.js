@@ -107,7 +107,7 @@ const Wallet = () => {
           setTrades(filteredTrades);
         }
       } else {
-        alert('Você precisa estar logado para acessar a carteira!');
+        // alert('Você precisa estar logado para acessar a carteira!');
         global.navigate('/login');
       }
     }
