@@ -57,7 +57,10 @@ const TradeModal = ({ operation }) => {
         </div>
       </form>
       {showTraded ? (
-        <p className={styled.withdrawTrade}>
+        <p
+          className={styled.withdrawTrade}
+          style={operation === 'Depositar' ? { color: '#3a981a' } : null}
+        >
           {operation === 'Depositar' ? '+' : '-'} ${quantity},00
         </p>
       ) : null}

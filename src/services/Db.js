@@ -4,7 +4,6 @@ const db = axios.create({
   baseURL: 'https://backend-cryptosimulator.herokuapp.com/',
   headers: {
     'Content-Type': 'application/json',
-    Accept: 'application/json',
   },
 });
 
